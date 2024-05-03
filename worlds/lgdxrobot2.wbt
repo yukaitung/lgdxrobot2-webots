@@ -1,0 +1,313 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Plastic.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/CorrodedMetal.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Rubber.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.1596600782080962 0.7113215529000814 -0.6844927375848492 0.6337149259781095
+  position -0.6114724121015527 0.34951984864111085 0.3710664236390868
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 10 10
+}
+Robot {
+  translation 0 0 0.1
+  children [
+    DEF BODY Pose {
+      translation 0 0 -0.036
+      children [
+        DEF BASE_TOP Pose {
+          translation 0 0 0.072
+          children [
+            Shape {
+              appearance Plastic {
+                colorOverride 0 0 0
+              }
+              geometry Box {
+                size 0.286 0.237 0.004
+              }
+            }
+          ]
+        }
+        DEF STANDOFF_8 Pose {
+          translation -0.138 -0.0685 0.037
+          children [
+            Shape {
+              appearance CorrodedMetal {
+              }
+              geometry Cylinder {
+                height 0.07
+                radius 0.004
+              }
+            }
+          ]
+        }
+        DEF STANDOFF_7 Pose {
+          translation -0.138 0.0685 0.037
+          children [
+            Shape {
+              appearance CorrodedMetal {
+              }
+              geometry Cylinder {
+                height 0.07
+                radius 0.004
+              }
+            }
+          ]
+        }
+        DEF STANDOFF_6 Pose {
+          translation -0.066 -0.0685 0.037
+          children [
+            Shape {
+              appearance CorrodedMetal {
+              }
+              geometry Cylinder {
+                height 0.07
+                radius 0.004
+              }
+            }
+          ]
+        }
+        DEF STANDOFF_5 Pose {
+          translation -0.066 0.0685 0.037
+          children [
+            Shape {
+              appearance CorrodedMetal {
+              }
+              geometry Cylinder {
+                height 0.07
+                radius 0.004
+              }
+            }
+          ]
+        }
+        DEF STANDOFF_4 Pose {
+          translation 0.066 -0.0685 0.037
+          children [
+            Shape {
+              appearance CorrodedMetal {
+              }
+              geometry Cylinder {
+                height 0.07
+                radius 0.004
+              }
+            }
+          ]
+        }
+        DEF STANDOFF_3 Pose {
+          translation 0.066 0.0685 0.037
+          children [
+            Shape {
+              appearance CorrodedMetal {
+              }
+              geometry Cylinder {
+                height 0.07
+                radius 0.004
+              }
+            }
+          ]
+        }
+        DEF STANDOFF_2 Pose {
+          translation 0.138 -0.0685 0.037
+          children [
+            Shape {
+              appearance CorrodedMetal {
+              }
+              geometry Cylinder {
+                height 0.07
+                radius 0.004
+              }
+            }
+          ]
+        }
+        DEF STANDOFF_1 Pose {
+          translation 0.138 0.0685 0.037
+          children [
+            Shape {
+              appearance CorrodedMetal {
+              }
+              geometry Cylinder {
+                height 0.07
+                radius 0.004
+              }
+            }
+          ]
+        }
+        DEF BASE_REAR Pose {
+          translation -0.102 0 0
+          children [
+            Shape {
+              appearance Plastic {
+                colorOverride 0 0 0
+              }
+              geometry Box {
+                size 0.08 0.145 0.004
+              }
+            }
+          ]
+        }
+        DEF BASE_CENTRE Shape {
+          appearance DEF LGDX_MATERIAL1 Plastic {
+            colorOverride 0 0 0
+          }
+          geometry Box {
+            size 0.124 0.237 0.004
+          }
+        }
+        DEF BASE_FRONT Pose {
+          translation 0.102 0 0
+          children [
+            Shape {
+              appearance Plastic {
+                colorOverride 0 0 0
+              }
+              geometry Box {
+                size 0.08 0.145 0.004
+              }
+            }
+          ]
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.1055 0.1025 -0.0545
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint DEF WHEEL_1 Solid {
+        translation 0.1055 0.1025 -0.0545
+        rotation 1 0 0 1.5708
+        children [
+          DEF WHEEL Shape {
+            appearance Rubber {
+            }
+            geometry Cylinder {
+              height 0.032
+              radius 0.0375
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE WHEEL
+        physics Physics {
+          density -1
+          mass 0.1
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor -0.1055 0.1025 -0.0545
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint DEF WHEEL_3 Solid {
+        translation -0.1055 0.1025 -0.0545
+        rotation 1 0 0 1.5708
+        children [
+          DEF WHEEL Shape {
+            appearance Rubber {
+            }
+            geometry Cylinder {
+              height 0.032
+              radius 0.0375
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE WHEEL
+        physics Physics {
+          density -1
+          mass 0.1
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor -0.1055 -0.1025 -0.0545
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint DEF WHEEL_4 Solid {
+        translation -0.1055 -0.1025 -0.0545
+        rotation 1 0 0 1.5708
+        children [
+          DEF WHEEL Shape {
+            appearance Rubber {
+            }
+            geometry Cylinder {
+              height 0.032
+              radius 0.0375
+            }
+          }
+        ]
+        name "solid(4)"
+        boundingObject USE WHEEL
+        physics Physics {
+          density -1
+          mass 0.1
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.1055 -0.1025 -0.0545
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint DEF WHEEL_2 Solid {
+        translation 0.1055 -0.1025 -0.0545
+        rotation 1 0 0 1.5708
+        children [
+          DEF WHEEL Shape {
+            appearance Rubber {
+            }
+            geometry Cylinder {
+              height 0.032
+              radius 0.0375
+            }
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE WHEEL
+        physics Physics {
+          density -1
+          mass 0.1
+        }
+      }
+    }
+  ]
+  name "lgdxrobot2"
+  boundingObject Box {
+    size 0.286 0.237 0.076
+  }
+  physics Physics {
+  }
+}
