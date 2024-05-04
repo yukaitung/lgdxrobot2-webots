@@ -8,10 +8,35 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Rubber.proto"
 
 WorldInfo {
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation 0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation -0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
 }
 Viewpoint {
-  orientation 0.1596600782080962 0.7113215529000814 -0.6844927375848492 0.6337149259781095
-  position -0.6114724121015527 0.34951984864111085 0.3710664236390868
+  orientation 0.18637626178023914 0.8710302649282418 -0.45449990827706543 0.8799938088816439
+  position -0.7849197705647851 0.3546317839139978 0.9467855516067878
 }
 TexturedBackground {
 }
@@ -203,72 +228,9 @@ Robot {
           }
         ]
         name "solid(1)"
+        contactMaterial "ExteriorWheelMat"
         boundingObject USE WHEEL
         physics Physics {
-          density -1
-          mass 0.1
-        }
-      }
-    }
-    HingeJoint {
-      jointParameters HingeJointParameters {
-        axis 0 1 0
-        anchor -0.1055 0.1025 -0.0545
-      }
-      device [
-        RotationalMotor {
-          name "wheel1"
-        }
-      ]
-      endPoint DEF WHEEL_3 Solid {
-        translation -0.1055 0.1025 -0.0545
-        rotation 1 0 0 1.5708
-        children [
-          DEF WHEEL Shape {
-            appearance Rubber {
-            }
-            geometry Cylinder {
-              height 0.032
-              radius 0.0375
-            }
-          }
-        ]
-        name "solid(3)"
-        boundingObject USE WHEEL
-        physics Physics {
-          density -1
-          mass 0.1
-        }
-      }
-    }
-    HingeJoint {
-      jointParameters HingeJointParameters {
-        axis 0 1 0
-        anchor -0.1055 -0.1025 -0.0545
-      }
-      device [
-        RotationalMotor {
-          name "wheel1"
-        }
-      ]
-      endPoint DEF WHEEL_4 Solid {
-        translation -0.1055 -0.1025 -0.0545
-        rotation 1 0 0 1.5708
-        children [
-          DEF WHEEL Shape {
-            appearance Rubber {
-            }
-            geometry Cylinder {
-              height 0.032
-              radius 0.0375
-            }
-          }
-        ]
-        name "solid(4)"
-        boundingObject USE WHEEL
-        physics Physics {
-          density -1
-          mass 0.1
         }
       }
     }
@@ -279,7 +241,7 @@ Robot {
       }
       device [
         RotationalMotor {
-          name "wheel1"
+          name "wheel2"
         }
       ]
       endPoint DEF WHEEL_2 Solid {
@@ -296,10 +258,69 @@ Robot {
           }
         ]
         name "solid(2)"
+        contactMaterial "InteriorWheelMat"
         boundingObject USE WHEEL
         physics Physics {
-          density -1
-          mass 0.1
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor -0.1055 0.1025 -0.0545
+      }
+      device [
+        RotationalMotor {
+          name "wheel3"
+        }
+      ]
+      endPoint DEF WHEEL_3 Solid {
+        translation -0.1055 0.1025 -0.0545
+        rotation 1 0 0 1.5708
+        children [
+          DEF WHEEL Shape {
+            appearance Rubber {
+            }
+            geometry Cylinder {
+              height 0.032
+              radius 0.0375
+            }
+          }
+        ]
+        name "solid(3)"
+        contactMaterial "InteriorWheelMat"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor -0.1055 -0.1025 -0.0545
+      }
+      device [
+        RotationalMotor {
+          name "wheel4"
+        }
+      ]
+      endPoint DEF WHEEL_4 Solid {
+        translation -0.1055 -0.1025 -0.0545
+        rotation 1 0 0 1.5708
+        children [
+          DEF WHEEL Shape {
+            appearance Rubber {
+            }
+            geometry Cylinder {
+              height 0.032
+              radius 0.0375
+            }
+          }
+        ]
+        name "solid(4)"
+        contactMaterial "ExteriorWheelMat"
+        boundingObject USE WHEEL
+        physics Physics {
         }
       }
     }
@@ -310,4 +331,5 @@ Robot {
   }
   physics Physics {
   }
+  controller "lgdxrobot2"
 }
