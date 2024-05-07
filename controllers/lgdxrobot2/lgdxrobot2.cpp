@@ -7,11 +7,26 @@
 // You may need to add webots include files such as
 // <webots/DistanceSensor.hpp>, <webots/Motor.hpp>, etc.
 // and/or to add some other includes
+#include <webots/Camera.hpp>
+#include <webots/RangeFinder.hpp>
+#include <webots/Lidar.hpp>
 #include <webots/Motor.hpp>
 #include <webots/Robot.hpp>
 
+#define CHASSIS_LX 0.237
+#define CHASSIS_LY 0.287
+#define WHEEL_RADIUS 0.0375
+
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
+
+void motorSetIk(Motor **wheels, float velocityX, float velocityY, float velocityW)
+{
+  wheels[0]->setVelocity((1 / WHEEL_RADIUS) * (velocityX - velocityY - (CHASSIS_LX + CHASSIS_LY) * velocityW));
+  wheels[1]->setVelocity((1 / WHEEL_RADIUS) * (velocityX + velocityY + (CHASSIS_LX + CHASSIS_LY) * velocityW));
+  wheels[2]->setVelocity((1 / WHEEL_RADIUS) * (velocityX + velocityY - (CHASSIS_LX + CHASSIS_LY) * velocityW));
+  wheels[3]->setVelocity((1 / WHEEL_RADIUS) * (velocityX - velocityY + (CHASSIS_LX + CHASSIS_LY) * velocityW));
+}
 
 // This is the main program of your controller.
 // It creates an instance of your Robot instance, launches its
@@ -32,6 +47,24 @@ int main(int argc, char **argv) {
   //  Motor *motor = robot->getMotor("motorname");
   //  DistanceSensor *ds = robot->getDistanceSensor("dsname");
   //  ds->enable(timeStep);
+  Camera *camera = robot->getCamera("camera rgb");
+  camera->enable(timeStep);
+  
+  RangeFinder *rangeFinder = robot->getRangeFinder("camera depth");
+  rangeFinder->enable(timeStep);
+  
+  Lidar *lidar = robot->getLidar("lidar");
+  lidar->enable(timeStep);
+  lidar->enablePointCloud();
+  
+  // get lidar motor and enable rotation (only for visualization, no effect on the sensor)
+  Motor *lidarMainMotor = robot->getMotor("lidar_main_motor");
+  Motor *lidarSecondaryMotor = robot->getMotor("lidar_secondary_motor");
+  lidarMainMotor->setPosition(INFINITY);
+  lidarSecondaryMotor->setPosition(INFINITY);
+  lidarMainMotor->setVelocity(30);
+  lidarSecondaryMotor->setVelocity(60);
+  
   Motor *wheels[4];
   char wheels_names[4][8] = {"wheel1", "wheel2", "wheel3", "wheel4"};
   for (int i = 0; i < 4; i++) {
@@ -39,10 +72,7 @@ int main(int argc, char **argv) {
     wheels[i]->setPosition(INFINITY);
   }
   
-  wheels[0]->setVelocity(2);
-  wheels[1]->setVelocity(-2);
-  wheels[2]->setVelocity(-2);
-  wheels[3]->setVelocity(2);
+  motorSetIk(wheels, 0, 0, 0.5);
 
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller

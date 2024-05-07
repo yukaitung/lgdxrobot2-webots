@@ -6,6 +6,9 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Plastic.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/CorrodedMetal.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Rubber.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/devices/robotis/protos/RobotisLds01.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/devices/orbbec/protos/Astra.proto"
 
 WorldInfo {
   basicTimeStep 16
@@ -35,8 +38,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.18637626178023914 0.8710302649282418 -0.45449990827706543 0.8799938088816439
-  position -0.7849197705647851 0.3546317839139978 0.9467855516067878
+  orientation -0.08849860335290084 -0.9696569390072305 0.22788904721314218 5.521354769373053
+  position -1.1110056222444602 0.23646149613275239 1.2212821442566708
 }
 TexturedBackground {
 }
@@ -45,9 +48,40 @@ TexturedBackgroundLight {
 RectangleArena {
   floorSize 10 10
 }
+WoodenBox {
+  translation 1.05905 1.3304 0.3
+}
+WoodenBox {
+  translation 1.31854 0.105752 0.3
+  name "wooden box(5)"
+}
+WoodenBox {
+  translation -1.54284 1.28698 0.3
+  name "wooden box(3)"
+}
+WoodenBox {
+  translation -1.05186 -1.82096 0.3
+  name "wooden box(4)"
+}
+WoodenBox {
+  translation -2.43731 -1.50923 0.3
+  name "wooden box(1)"
+}
+WoodenBox {
+  translation 1.6708 -2.19982 0.3
+  name "wooden box(2)"
+}
 Robot {
   translation 0 0 0.1
   children [
+    Astra {
+      translation 0.1 0 -0.03
+      name "camera"
+    }
+    RobotisLds01 {
+      translation 0 0 0.067
+      name "lidar"
+    }
     DEF BODY Pose {
       translation 0 0 -0.036
       children [
@@ -215,8 +249,8 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_1 Solid {
-        translation 0.1055 0.1025 -0.0545
-        rotation 1 0 0 1.5708
+        translation 0.10549999989548553 0.10249999998380187 -0.05448961104534447
+        rotation 0.9999999999999999 -4.0023598813166163e-13 4.001375935361289e-13 1.5707999999900777
         children [
           DEF WHEEL Shape {
             appearance Rubber {
@@ -245,8 +279,8 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_2 Solid {
-        translation 0.1055 -0.1025 -0.0545
-        rotation 1 0 0 1.5708
+        translation 0.10549999989554854 -0.10250000001615034 -0.054489617305228444
+        rotation 0.9999999999999999 4.420107998655663e-13 -4.4211248086086705e-13 1.5707999999900808
         children [
           DEF WHEEL Shape {
             appearance Rubber {
@@ -275,8 +309,8 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_3 Solid {
-        translation -0.1055 0.1025 -0.0545
-        rotation 1 0 0 1.5708
+        translation -0.10550000010413423 0.10249999998386608 -0.054489652674331035
+        rotation 0.9999999999999999 5.23453985110245e-13 -5.235556661760804e-13 1.5707999999900746
         children [
           DEF WHEEL Shape {
             appearance Rubber {
@@ -305,8 +339,8 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_4 Solid {
-        translation -0.1055 -0.1025 -0.0545
-        rotation 1 0 0 1.5708
+        translation -0.10550000010407125 -0.10250000001608488 -0.054489658934215
+        rotation 0.9999999999999999 -3.079547118686215e-13 3.07856138772195e-13 1.5707999999900752
         children [
           DEF WHEEL Shape {
             appearance Rubber {
