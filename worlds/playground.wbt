@@ -1,0 +1,72 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "../protos/LGDXRobot2.proto"
+
+WorldInfo {
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation 0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation -0.785398 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.07756423624033838 -0.9552824206163802 0.2853406492558716 5.728766847173155
+  position -1.24940496373089 0.2386665117578576 0.9373027051112919
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 10 10
+}
+WoodenBox {
+  translation 1.05905 1.3304 0.3
+}
+WoodenBox {
+  translation 1.31854 0.105752 0.3
+  name "wooden box(5)"
+}
+WoodenBox {
+  translation -1.54284 1.28698 0.3
+  name "wooden box(3)"
+}
+WoodenBox {
+  translation -1.05186 -1.82096 0.3
+  name "wooden box(4)"
+}
+WoodenBox {
+  translation -2.43731 -1.50923 0.3
+  name "wooden box(1)"
+}
+WoodenBox {
+  translation 1.6708 -2.19982 0.3
+  name "wooden box(2)"
+}
+LGDXRobot2 {
+  controller "lgdxrobot2"
+}
