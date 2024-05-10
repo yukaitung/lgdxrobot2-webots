@@ -11,7 +11,10 @@
 #include <webots/RangeFinder.hpp>
 #include <webots/Lidar.hpp>
 #include <webots/Motor.hpp>
+#include <webots/PositionSensor.hpp>
 #include <webots/Robot.hpp>
+
+#include <iostream>
 
 #define CHASSIS_LX 0.237
 #define CHASSIS_LY 0.287
@@ -26,6 +29,7 @@ void motorSetIk(Motor **wheels, float velocityX, float velocityY, float velocity
   wheels[1]->setVelocity((1 / WHEEL_RADIUS) * (velocityX + velocityY + (CHASSIS_LX + CHASSIS_LY) * velocityW));
   wheels[2]->setVelocity((1 / WHEEL_RADIUS) * (velocityX + velocityY - (CHASSIS_LX + CHASSIS_LY) * velocityW));
   wheels[3]->setVelocity((1 / WHEEL_RADIUS) * (velocityX - velocityY + (CHASSIS_LX + CHASSIS_LY) * velocityW));
+  std::cout << "IK: W1: " << wheels[0]->getVelocity() << " W2: " << wheels[1]->getVelocity() << " W3: " << wheels[2]->getVelocity() << " W4: " << wheels[0]->getVelocity() << std::endl;
 }
 
 // This is the main program of your controller.
@@ -72,20 +76,38 @@ int main(int argc, char **argv) {
     wheels[i]->setPosition(INFINITY);
   }
   
-  motorSetIk(wheels, 0, 0, 0.5);
+  PositionSensor *positionSensors[4];
+  char position_name[4][9] = {"encoder1", "encoder2", "encoder3", "encoder4"};
+  for (int i = 0; i < 4; i++) {
+    positionSensors[i] = robot->getPositionSensor(position_name[i]);
+    positionSensors[i]->enable(timeStep);
+  }
+  
+  motorSetIk(wheels, 0.2, 0, 0);
 
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
+  double motorFk[3] = {0};
+  double motorPositionChange[4] = {0};
+  double motorPosition[4] = {0};
+  double motorLastPosition[4] = {0};
+  double lastTime = 0;
   while (robot->step(timeStep) != -1) {
-    // Read the sensors:
-    // Enter here functions to read sensor data, like:
-    //  double val = ds->getValue();
-
-    // Process sensor data here.
-
-    // Enter here functions to send actuator commands, like:
-    //  motor->setPosition(10.0);
-
+  double curTime = robot->getTime();
+  double dt = curTime - lastTime;
+    for (int i = 0; i < 4; i++) {
+      motorPosition[i] = positionSensors[i]->getValue();
+      motorPositionChange[i] = motorPosition[i] - motorLastPosition[i];
+    }
+    //std::cout << "E1: " << motorPositionChange[0] << " E2: " << motorPositionChange[1] << " E3: " << motorPositionChange[2] << " E4: " << motorPositionChange[3]<< std::endl;
+    motorFk[0] = ((motorPositionChange[0] + motorPositionChange[1] + motorPositionChange[2] + motorPositionChange[3]) * (WHEEL_RADIUS / 4)) / dt;
+    motorFk[1] = ((-motorPositionChange[0] + motorPositionChange[1] + motorPositionChange[2] - motorPositionChange[3]) * (WHEEL_RADIUS / 4)) / dt;
+    motorFk[2] = ((-motorPositionChange[0] + motorPositionChange[1] - motorPositionChange[2] + motorPositionChange[3]) * ((WHEEL_RADIUS * 2) / (M_PI * (CHASSIS_LX + CHASSIS_LY)))) / dt;
+    std::cout << " X: " << motorFk[0] << " Y: " << motorFk[1] << " W: " << motorFk[2] << std::endl;
+    for (int i = 0; i < 4; i++) {
+      motorLastPosition[i] = motorPosition[i];
+    }
+    lastTime = curTime;
   };
 
   // Enter here exit cleanup code.

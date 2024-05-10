@@ -38,8 +38,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.2186713755823298 -0.288256857596611 -0.9322504028153911 4.917059763750498
-  position -0.1465359427649361 -1.8918111036347571 0.7960390008860472
+  orientation -0.23780487596052763 -0.5768546427153667 0.7814650101873561 5.312345084500304
+  position -3.4360634920667783 3.567248270231122 3.5060506308190145
 }
 TexturedBackground {
 }
@@ -52,7 +52,7 @@ WoodenBox {
   translation 1.05905 1.3304 0.3
 }
 WoodenBox {
-  translation 1.31854 0.105752 0.3
+  translation 1.13755 -1.25329 0.3
   name "wooden box(5)"
 }
 WoodenBox {
@@ -244,13 +244,16 @@ Robot {
         anchor 0.1055 0.1025 -0.0545
       }
       device [
+        PositionSensor {
+          name "encoder1"
+        }
         RotationalMotor {
           name "wheel1"
         }
       ]
       endPoint DEF WHEEL_1 Solid {
-        translation 0.10549999989548553 0.10249999998380187 -0.05448961104534447
-        rotation 0.9999999999999999 -4.0023598813166163e-13 4.001375935361289e-13 1.5707999999900777
+        translation 0.10549999989548409 0.10249999998380187 -0.05448961104534447
+        rotation 0.9999999999999999 -6.93990113043316e-11 6.939916633019335e-11 1.570799999989945
         children [
           DEF WHEEL Shape {
             appearance Rubber {
@@ -274,13 +277,16 @@ Robot {
         anchor 0.1055 -0.1025 -0.0545
       }
       device [
+        PositionSensor {
+          name "encoder2"
+        }
         RotationalMotor {
           name "wheel2"
         }
       ]
       endPoint DEF WHEEL_2 Solid {
-        translation 0.10549999989554854 -0.10250000001615034 -0.054489617305228444
-        rotation 0.9999999999999999 4.420107998655663e-13 -4.4211248086086705e-13 1.5707999999900808
+        translation 0.10549999989554709 -0.10250000001615034 -0.054489617305228444
+        rotation 0.9999999999999999 -6.842943834738403e-11 6.842958962536844e-11 1.5707999999899538
         children [
           DEF WHEEL Shape {
             appearance Rubber {
@@ -304,13 +310,16 @@ Robot {
         anchor -0.1055 0.1025 -0.0545
       }
       device [
+        PositionSensor {
+          name "encoder3"
+        }
         RotationalMotor {
           name "wheel3"
         }
       ]
       endPoint DEF WHEEL_3 Solid {
-        translation -0.10550000010413423 0.10249999998386608 -0.054489652674331035
-        rotation 0.9999999999999999 5.23453985110245e-13 -5.235556661760804e-13 1.5707999999900746
+        translation -0.10550000010413281 0.10249999998386608 -0.054489652674331035
+        rotation 0.9999999999999999 6.892830441728279e-11 -6.892865732358016e-11 1.570799999989936
         children [
           DEF WHEEL Shape {
             appearance Rubber {
@@ -334,13 +343,16 @@ Robot {
         anchor -0.1055 -0.1025 -0.0545
       }
       device [
+        PositionSensor {
+          name "encoder4"
+        }
         RotationalMotor {
           name "wheel4"
         }
       ]
       endPoint DEF WHEEL_4 Solid {
-        translation -0.10550000010407125 -0.10250000001608488 -0.054489658934215
-        rotation 0.9999999999999999 -3.079547118686215e-13 3.07856138772195e-13 1.5707999999900752
+        translation -0.10550000010406983 -0.10250000001608488 -0.054489658934215
+        rotation 0.9999999999999999 6.808216687323429e-11 -6.808251664407214e-11 1.5707999999899447
         children [
           DEF WHEEL Shape {
             appearance Rubber {
@@ -366,208 +378,5 @@ Robot {
   physics Physics {
   }
   controller "lgdxrobot2"
-}
-Robot {
-  translation 0.789648 -0.754603 0.2
-  children [
-    Astra {
-      translation 0.1 0 -0.03
-      name "camera"
-    }
-    RobotisLds01 {
-      translation 0 0 0.067
-      name "lidar"
-    }
-    DEF BODY Pose {
-      translation 0 0 -0.036
-      children [
-        Solid {
-          children [
-            DEF BASE_CENTRE Shape {
-              appearance DEF LGDX_MATERIAL1 Plastic {
-                colorOverride 0 0 0
-              }
-              geometry Box {
-                size 0.124 0.237 0.004
-              }
-            }
-          ]
-          name "BASE_CENTRE_SOLID"
-          boundingObject USE BASE_CENTRE
-        }
-        Solid {
-          translation 0 0 0.072
-          children [
-            DEF BASE_TOP_SHAPE Shape {
-              appearance Plastic {
-                colorOverride 0 0 0
-              }
-              geometry Box {
-                size 0.286 0.237 0.004
-              }
-            }
-          ]
-          name "BASE_TOP_SOLID"
-          boundingObject USE BASE_TOP_SHAPE
-        }
-        DEF BASE_REAR Solid {
-          translation -0.102 0 0
-          children [
-            DEF BASE_REAR_SHAPE Shape {
-              appearance Plastic {
-                colorOverride 0 0 0
-              }
-              geometry Box {
-                size 0.08 0.145 0.004
-              }
-            }
-          ]
-          name "BASE_REAR_SOLID"
-          boundingObject USE BASE_REAR_SHAPE
-        }
-        DEF BASE_FRONT Solid {
-          translation 0.102 0 0
-          children [
-            DEF BASE_FRONT_SHAPE Shape {
-              appearance Plastic {
-                colorOverride 0 0 0
-              }
-              geometry Box {
-                size 0.08 0.145 0.004
-              }
-            }
-          ]
-          name "BASE_FRONT_SOLID"
-          boundingObject USE BASE_FRONT_SHAPE
-        }
-      ]
-    }
-    HingeJoint {
-      jointParameters HingeJointParameters {
-        axis 0 1 0
-        anchor 0.1055 0.1025 -0.0545
-      }
-      device [
-        RotationalMotor {
-          name "wheel1"
-        }
-      ]
-      endPoint DEF WHEEL_1 Solid {
-        translation 0.10549999989548553 0.10249999998380187 -0.05448961104534447
-        rotation 0.9999999999999999 -4.0023598813166163e-13 4.001375935361289e-13 1.5707999999900777
-        children [
-          DEF WHEEL Shape {
-            appearance Rubber {
-            }
-            geometry Cylinder {
-              height 0.032
-              radius 0.0375
-            }
-          }
-        ]
-        name "WHEEL_1_SOLID"
-        contactMaterial "ExteriorWheelMat"
-        boundingObject USE WHEEL
-        physics Physics {
-        }
-      }
-    }
-    HingeJoint {
-      jointParameters HingeJointParameters {
-        axis 0 1 0
-        anchor 0.1055 -0.1025 -0.0545
-      }
-      device [
-        RotationalMotor {
-          name "wheel2"
-        }
-      ]
-      endPoint DEF WHEEL_2 Solid {
-        translation 0.10549999989554854 -0.10250000001615034 -0.054489617305228444
-        rotation 0.9999999999999999 4.420107998655663e-13 -4.4211248086086705e-13 1.5707999999900808
-        children [
-          DEF WHEEL Shape {
-            appearance Rubber {
-            }
-            geometry Cylinder {
-              height 0.032
-              radius 0.0375
-            }
-          }
-        ]
-        name "WHEEL_2_SOLID"
-        contactMaterial "InteriorWheelMat"
-        boundingObject USE WHEEL
-        physics Physics {
-        }
-      }
-    }
-    HingeJoint {
-      jointParameters HingeJointParameters {
-        axis 0 1 0
-        anchor -0.1055 0.1025 -0.0545
-      }
-      device [
-        RotationalMotor {
-          name "wheel3"
-        }
-      ]
-      endPoint DEF WHEEL_3 Solid {
-        translation -0.10550000010413423 0.10249999998386608 -0.054489652674331035
-        rotation 0.9999999999999999 5.23453985110245e-13 -5.235556661760804e-13 1.5707999999900746
-        children [
-          DEF WHEEL Shape {
-            appearance Rubber {
-            }
-            geometry Cylinder {
-              height 0.032
-              radius 0.0375
-            }
-          }
-        ]
-        name "WHEEL_3_SOLID"
-        contactMaterial "InteriorWheelMat"
-        boundingObject USE WHEEL
-        physics Physics {
-        }
-      }
-    }
-    HingeJoint {
-      jointParameters HingeJointParameters {
-        axis 0 1 0
-        anchor -0.1055 -0.1025 -0.0545
-      }
-      device [
-        RotationalMotor {
-          name "wheel4"
-        }
-      ]
-      endPoint DEF WHEEL_4 Solid {
-        translation -0.10550000010407125 -0.10250000001608488 -0.054489658934215
-        rotation 0.9999999999999999 -3.079547118686215e-13 3.07856138772195e-13 1.5707999999900752
-        children [
-          DEF WHEEL Shape {
-            appearance Rubber {
-            }
-            geometry Cylinder {
-              height 0.032
-              radius 0.0375
-            }
-          }
-        ]
-        name "WHEEL_4_SOLID"
-        contactMaterial "ExteriorWheelMat"
-        boundingObject USE WHEEL
-        physics Physics {
-        }
-      }
-    }
-  ]
-  name "lgdxrobot2_urdf"
-  boundingObject Box {
-    size 0.286 0.237 0.076
-  }
-  physics Physics {
-  }
-  controller "lgdxrobot2"
+  supervisor TRUE
 }
