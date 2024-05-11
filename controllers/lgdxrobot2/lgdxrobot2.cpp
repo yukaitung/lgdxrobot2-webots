@@ -83,7 +83,7 @@ int main(int argc, char **argv) {
     positionSensors[i]->enable(timeStep);
   }
   
-  motorSetIk(wheels, 0, 0, 0.2);
+  motorSetIk(wheels, 0.1, 0, 0);
 
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
@@ -103,7 +103,7 @@ int main(int argc, char **argv) {
     motorFk[0] = ((motorPositionChange[0] + motorPositionChange[1] + motorPositionChange[2] + motorPositionChange[3]) * (WHEEL_RADIUS / 4)) / dt;
     motorFk[1] = ((-motorPositionChange[0] + motorPositionChange[1] + motorPositionChange[2] - motorPositionChange[3]) * (WHEEL_RADIUS / 4)) / dt;
     motorFk[2] = ((-motorPositionChange[0] + motorPositionChange[1] - motorPositionChange[2] + motorPositionChange[3]) * ((WHEEL_RADIUS) / (4 * (CHASSIS_LX + CHASSIS_LY)))) / dt;
-    std::cout << " X: " << motorFk[0] << " Y: " << motorFk[1] << " W: " << motorFk[2] << std::endl;
+    //std::cout << " X: " << motorFk[0] << " Y: " << motorFk[1] << " W: " << motorFk[2] << std::endl;
     for (int i = 0; i < 4; i++) {
       motorLastPosition[i] = motorPosition[i];
     }

@@ -7,17 +7,15 @@
     <child link="WHEEL_4_SOLID"/>
     <axis xyz="0 -0.000004 -1"/>
     <limit effort="10" velocity="10"/>
-    <origin xyz="-0.1055 -0.1025 -0.0545" rpy="1.5708 0 0"/>
+    <origin xyz="-0.1055 -0.1025 0.0375" rpy="1.5708 0 0"/>
   </joint>
   <link name="WHEEL_4_SOLID">
     <visual>
-      <origin xyz="0 0.00001 0" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="0.0375" length="0.032"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0.00001 0" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="0.0375" length="0.032"/>
       </geometry>
@@ -28,17 +26,15 @@
     <child link="WHEEL_3_SOLID"/>
     <axis xyz="0 -0.000004 -1"/>
     <limit effort="10" velocity="10"/>
-    <origin xyz="-0.1055 0.10251 -0.0545" rpy="1.5708 0 0"/>
+    <origin xyz="-0.1055 0.1025 0.0375" rpy="1.5708 0 0"/>
   </joint>
   <link name="WHEEL_3_SOLID">
     <visual>
-      <origin xyz="0 0.00001 0" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="0.0375" length="0.032"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0.00001 0" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="0.0375" length="0.032"/>
       </geometry>
@@ -49,17 +45,15 @@
     <child link="WHEEL_2_SOLID"/>
     <axis xyz="0 -0.000004 -1"/>
     <limit effort="10" velocity="10"/>
-    <origin xyz="0.1055 -0.10249 -0.0545" rpy="1.5708 0 0"/>
+    <origin xyz="0.1055 -0.1025 0.0375" rpy="1.5708 0 0"/>
   </joint>
   <link name="WHEEL_2_SOLID">
     <visual>
-      <origin xyz="0 0.00001 0" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="0.0375" length="0.032"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0.00001 0" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="0.0375" length="0.032"/>
       </geometry>
@@ -70,91 +64,96 @@
     <child link="WHEEL_1_SOLID"/>
     <axis xyz="0 -0.000004 -1"/>
     <limit effort="10" velocity="10"/>
-    <origin xyz="0.1055 0.10251 -0.0545" rpy="1.5708 0 0"/>
+    <origin xyz="0.1055 0.1025 0.0375" rpy="1.5708 0 0"/>
   </joint>
   <link name="WHEEL_1_SOLID">
     <visual>
-      <origin xyz="0 0.00001 0" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="0.0375" length="0.032"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0.00001 0" rpy="0 0 0"/>
       <geometry>
         <cylinder radius="0.0375" length="0.032"/>
       </geometry>
     </collision>
   </link>
-  <link name="BASE_FRONT_SOLID">
-    <visual>
-      <origin xyz="0 0.00001 0" rpy="0 0 0"/>
-      <geometry>
-        <box size="0.08 0.145 0.004"/>
-      </geometry>
-    </visual>
-    <collision>
-      <origin xyz="0 0.00001 0" rpy="0 0 0"/>
-      <geometry>
-        <box size="0.08 0.145 0.004"/>
-      </geometry>
-    </collision>
+  <link name="solid">
   </link>
-  <joint name="base_link_BASE_FRONT_SOLID_joint" type="fixed">
+  <joint name="base_link_solid_joint" type="fixed">
     <parent link="base_link"/>
-    <child link="BASE_FRONT_SOLID"/>
-    <origin xyz="0.102 0.00001 -0.036" rpy="0 0 0"/>
+    <child link="solid"/>
+    <origin xyz="0.102 0 0.057" rpy="0 0 0"/>
   </joint>
-  <link name="BASE_REAR_SOLID">
-    <visual>
-      <geometry>
-        <box size="0.08 0.145 0.004"/>
-      </geometry>
-    </visual>
-    <collision>
-      <geometry>
-        <box size="0.08 0.145 0.004"/>
-      </geometry>
-    </collision>
+  <link name="solid_0">
   </link>
-  <joint name="base_link_BASE_REAR_SOLID_joint" type="fixed">
+  <joint name="base_link_solid_0_joint" type="fixed">
     <parent link="base_link"/>
-    <child link="BASE_REAR_SOLID"/>
-    <origin xyz="-0.102 0 -0.036" rpy="0 0 0"/>
+    <child link="solid_0"/>
+    <origin xyz="-0.102 0 0.057" rpy="0 0 0"/>
   </joint>
-  <link name="BASE_TOP_SOLID">
-    <visual>
-      <geometry>
-        <box size="0.286 0.237 0.004"/>
-      </geometry>
-    </visual>
-    <collision>
-      <geometry>
-        <box size="0.286 0.237 0.004"/>
-      </geometry>
-    </collision>
+  <link name="solid_1">
   </link>
-  <joint name="base_link_BASE_TOP_SOLID_joint" type="fixed">
+  <joint name="base_link_solid_1_joint" type="fixed">
     <parent link="base_link"/>
-    <child link="BASE_TOP_SOLID"/>
-    <origin xyz="0 0 0.036" rpy="0 0 0"/>
+    <child link="solid_1"/>
+    <origin xyz="0.138 0.0685 0.094" rpy="0 0 0"/>
   </joint>
-  <link name="BASE_CENTRE_SOLID">
-    <visual>
-      <geometry>
-        <box size="0.124 0.237 0.004"/>
-      </geometry>
-    </visual>
-    <collision>
-      <geometry>
-        <box size="0.124 0.237 0.004"/>
-      </geometry>
-    </collision>
+  <link name="solid_2">
   </link>
-  <joint name="base_link_BASE_CENTRE_SOLID_joint" type="fixed">
+  <joint name="base_link_solid_2_joint" type="fixed">
     <parent link="base_link"/>
-    <child link="BASE_CENTRE_SOLID"/>
-    <origin xyz="0 0 -0.036" rpy="0 0 0"/>
+    <child link="solid_2"/>
+    <origin xyz="0.138 -0.0685 0.094" rpy="0 0 0"/>
+  </joint>
+  <link name="solid_3">
+  </link>
+  <joint name="base_link_solid_3_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid_3"/>
+    <origin xyz="0.066 0.0685 0.094" rpy="0 0 0"/>
+  </joint>
+  <link name="solid_4">
+  </link>
+  <joint name="base_link_solid_4_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid_4"/>
+    <origin xyz="0.066 -0.0685 0.094" rpy="0 0 0"/>
+  </joint>
+  <link name="solid_5">
+  </link>
+  <joint name="base_link_solid_5_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid_5"/>
+    <origin xyz="-0.066 0.0685 0.094" rpy="0 0 0"/>
+  </joint>
+  <link name="solid_6">
+  </link>
+  <joint name="base_link_solid_6_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid_6"/>
+    <origin xyz="-0.066 -0.0685 0.094" rpy="0 0 0"/>
+  </joint>
+  <link name="solid_7">
+  </link>
+  <joint name="base_link_solid_7_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid_7"/>
+    <origin xyz="-0.138 0.0685 0.094" rpy="0 0 0"/>
+  </joint>
+  <link name="solid_8">
+  </link>
+  <joint name="base_link_solid_8_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid_8"/>
+    <origin xyz="-0.138 -0.0685 0.094" rpy="0 0 0"/>
+  </joint>
+  <link name="solid_9">
+  </link>
+  <joint name="base_link_solid_9_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid_9"/>
+    <origin xyz="0 0 0.129" rpy="0 0 0"/>
   </joint>
   <link name="lidar">
     <visual>
@@ -185,7 +184,7 @@
   <joint name="base_link_lidar_joint" type="fixed">
     <parent link="base_link"/>
     <child link="lidar"/>
-    <origin xyz="0 0 0.067" rpy="0 0 0"/>
+    <origin xyz="0 0 0.157" rpy="0 0 3.14159"/>
   </joint>
   <link name="screw3">
     <visual>
@@ -313,12 +312,12 @@
   </joint>
   <joint name="lidar_secondary_motor" type="continuous">
     <parent link="lidar"/>
-    <child link="solid"/>
+    <child link="solid_10"/>
     <axis xyz="0 -0.000004 1"/>
     <limit effort="10" velocity="150"/>
     <origin xyz="-0.046 0.01 -0.01" rpy="-0.000014 0.000005 3.141587"/>
   </joint>
-  <link name="solid">
+  <link name="solid_10">
   </link>
   <joint name="lidar_main_motor" type="continuous">
     <parent link="lidar"/>
@@ -358,7 +357,7 @@
   <joint name="base_link_camera_joint" type="fixed">
     <parent link="base_link"/>
     <child link="camera"/>
-    <origin xyz="0.1 0.01 -0.03" rpy="0 0 0"/>
+    <origin xyz="0.1 0.01 0.059" rpy="0 0 0"/>
   </joint>
   <link name="camera depth">
   </link>

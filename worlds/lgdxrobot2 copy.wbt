@@ -38,8 +38,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.14954013529166368 -0.6981080124491473 0.7002020786110622 5.689441019693675
-  position -4.214621453845071 1.2247744471767366 2.0882760942273584
+  orientation 0.09991982289637691 0.07887569717906737 -0.99186423132749 1.8130269614329924
+  position 0.3098365898436175 1.4338017247719819 0.4573789807302868
 }
 TexturedBackground {
 }
@@ -52,7 +52,7 @@ WoodenBox {
   translation 1.05905 1.3304 0.3
 }
 WoodenBox {
-  translation 0.953504 0.0714752 0.3
+  translation 1.0942 -0.0435776 0.3
   name "wooden box(5)"
 }
 WoodenBox {
@@ -72,7 +72,7 @@ WoodenBox {
   name "wooden box(2)"
 }
 Robot {
-  translation 0 0 0.1
+  translation 0 0 0.11
   children [
     Astra {
       translation 0.1 0 0.059
@@ -253,8 +253,8 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_1 Solid {
-        translation 0.10549999989548409 0.10249999998380187 0.0375
-        rotation 0.9999999999999999 -6.93990113043316e-11 6.939916633019335e-11 1.570799999989945
+        translation 0.10550752672507219 0.10249999982910134 0.037494585768589654
+        rotation -0.9999999999999797 -1.4205788295036526e-07 -1.420597778126573e-07 4.712384978277372
         children [
           DEF WHEEL Shape {
             appearance Rubber {
@@ -286,8 +286,8 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_2 Solid {
-        translation 0.10549999989554709 -0.10250000001615034 0.0375
-        rotation 0.9999999999999999 -6.842943834738403e-11 6.842958962536844e-11 1.5707999999899538
+        translation 0.10550752620026585 -0.10250000021476953 0.037494587845346906
+        rotation -0.9999999999999797 -1.4205788561951714e-07 -1.42059772866876e-07 4.712384978277373
         children [
           DEF WHEEL Shape {
             appearance Rubber {
@@ -319,8 +319,8 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_3 Solid {
-        translation -0.10550000010413281 0.10249999998386608 0.0375
-        rotation 0.9999999999999999 6.892830441728279e-11 -6.892865732358016e-11 1.570799999989936
+        translation -0.10549776391512178 0.10250000065656699 0.037492612169441684
+        rotation -0.9999999999999797 -1.420578865615701e-07 -1.420597831509604e-07 4.712384978277364
         children [
           DEF WHEEL Shape {
             appearance Rubber {
@@ -352,8 +352,8 @@ Robot {
         }
       ]
       endPoint DEF WHEEL_4 Solid {
-        translation -0.10550000010406983 -0.10250000001608488 0.0375
-        rotation 0.9999999999999999 6.808216687323447e-11 -6.808251664407232e-11 1.5707999999899447
+        translation -0.10549776443992788 -0.10249999938730366 0.037492614246199145
+        rotation -0.9999999999999797 -1.4205788365690482e-07 -1.420597811883487e-07 4.712384978277363
         children [
           DEF WHEEL Shape {
             appearance Rubber {
@@ -372,15 +372,7 @@ Robot {
       }
     }
   ]
-  name "LGDXRobot2"
-  boundingObject Pose {
-    translation 0 0 0.094
-    children [
-      Box {
-        size 0.286 0.237 0.076
-      }
-    ]
-  }
+  name "lgdxrobot2"
   physics Physics {
   }
   controller "lgdxrobot2"
